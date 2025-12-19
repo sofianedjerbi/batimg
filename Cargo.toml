@@ -15,5 +15,5 @@ tempfile = "3.23.0"
 [dependencies.ffmpeg-next]
 version = "8.0"
 default-features = false
-features = ["codec", "format", "software-scaling"]
+features = ["codec", "format", "software-scaling", "static", "build"]
 
