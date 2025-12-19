@@ -41,17 +41,8 @@ jobs:
           path: dist/batimg-linux-x86_64
 
   build-macos:
-    name: Build macOS ${{ matrix.arch }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-          - os: macos-13
-            arch: x86_64
-            target: x86_64-apple-darwin
-          - os: macos-14
-            arch: aarch64
-            target: aarch64-apple-darwin
+    name: Build macOS ARM64
+    runs-on: macos-latest
 
     steps:
       - name: Checkout
@@ -70,14 +61,14 @@ jobs:
       - name: Prepare artifact
         run: |
           mkdir -p dist
-          cp target/release/batimg dist/batimg-macos-${{ matrix.arch }}
-          chmod +x dist/batimg-macos-${{ matrix.arch }}
+          cp target/release/batimg dist/batimg-macos-aarch64
+          chmod +x dist/batimg-macos-aarch64
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: batimg-macos-${{ matrix.arch }}
-          path: dist/batimg-macos-${{ matrix.arch }}
+          name: batimg-macos-aarch64
+          path: dist/batimg-macos-aarch64
 
   release:
     name: Create Release
