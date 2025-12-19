@@ -155,10 +155,10 @@ fn main() {
             .long("debug")
             .help("Print debug stats")
             .takes_value(false))
-        .arg(Arg::new("audio")
+        .arg(Arg::new("no-audio")
             .short('a')
-            .long("audio")
-            .help("Play video audio")
+            .long("no-audio")
+            .help("Disable video audio")
             .takes_value(false))
         .arg(Arg::new("loop")
             .short('l')
@@ -186,7 +186,7 @@ fn main() {
 
     // Flag variables
     let debug: bool = matches.is_present("debug");
-    let play_audio: bool = matches.is_present("audio");
+    let play_audio: bool = !matches.is_present("no-audio");
     let timesync: bool = matches.is_present("timesync");
     let resolution: bool = !matches.is_present("resolution");
     let mut loop_video: bool = matches.is_present("loop");
